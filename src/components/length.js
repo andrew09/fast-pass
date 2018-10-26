@@ -6,7 +6,6 @@ export default class Length extends React.Component {
     render() {
         return (
             <div>
-                <p>Length</p>
                 <Slider
                     min={8}
                     max={30}

@@ -1,1 +1,3 @@
-# Fast Pass
+## fast-pass
+
+A menubar password generator
