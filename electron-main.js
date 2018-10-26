@@ -1,15 +1,12 @@
-import menubar from 'menubar';
-import AutoLaunch from 'auto-launch';
-import { Menu } from 'electron';
-import dotenv from 'dotenv';
+const menubar = require('menubar');
+const AutoLaunch = require('auto-launch');
+const { Menu } = require('electron');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-// height: 400,
-// width: 350,
-
-export const mb = menubar({
-    dir: `${__dirname}/../`,
+const mb = menubar({
+    dir: `${__dirname}/build/`,
     preloadWindow: true,
     height: 1000,
     width: 1000,
@@ -41,6 +38,10 @@ const contextMenu = Menu.buildFromTemplate([
         click: () => mb.app.quit(),
     },
 ]);
+mb.on('after-create-window', () => {
+    if (process.env.NODE_ENV !== 'production')
+        mb.window.loadURL('http://localhost:3000/');
+});
 
 mb.on('ready', () => {
     // eslint-disable-next-line
