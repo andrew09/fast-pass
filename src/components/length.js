@@ -6,11 +6,15 @@ export default class Length extends React.Component {
     render() {
         return (
             <div>
+                {`Length:
+                ${this.props.length}
+                `}
                 <Slider
-                    min={8}
-                    max={30}
-                    onChange={value => console.log('sliding', value)}
-                    onAfterChange={value => console.log('complete', value)}
+                    defaultValue={this.props.length}
+                    value={this.props.length}
+                    min={this.props.minLength}
+                    max={24}
+                    onChange={this.props.onChange}
                 />
             </div>
         );

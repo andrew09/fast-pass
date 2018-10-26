@@ -8,8 +8,8 @@ dotenv.config();
 const mb = menubar({
     dir: `${__dirname}/build/`,
     preloadWindow: true,
-    height: 1000,
-    width: 1000,
+    height: 250,
+    width: 400,
 });
 
 const appLauncher = new AutoLaunch({ name: process.env.APP_SLUG });
@@ -39,6 +39,7 @@ const contextMenu = Menu.buildFromTemplate([
     },
 ]);
 mb.on('after-create-window', () => {
+    mb.window.setResizable(false);
     if (process.env.NODE_ENV !== 'production')
         mb.window.loadURL('http://localhost:3000/');
 });
